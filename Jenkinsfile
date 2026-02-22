@@ -20,9 +20,10 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage('Package') {
+        stage('Archive Artifact & Reports') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                archiveArtifacts artifacts: 'target/surefire-reports/*.xml'
             }
         }
     }
