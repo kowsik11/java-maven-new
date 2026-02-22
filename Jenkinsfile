@@ -26,5 +26,10 @@ pipeline {
                 archiveArtifacts artifacts: 'target/surefire-reports/*.xml'
             }
         }
+        stage('Deploy') {
+            steps {
+                bat 'java -jar target/demo-0.0.1-SNAPSHOT.jar'
+            }
+        }
     }
 }
