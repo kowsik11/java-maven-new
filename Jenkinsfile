@@ -20,16 +20,24 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage('Archive Artifact & Reports') {
+        
+        stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                archiveArtifacts artifacts: 'target/surefire-reports/*.xml'
             }
         }
-        stage('Deploy') {
-            steps {
-                bat 'java -jar target/demo-0.0.1-SNAPSHOT.jar'
-            }
-        }
+
+        // stage('Archive Artifact & Reports') {
+        //     steps {
+        //         archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        //         archiveArtifacts artifacts: 'target/surefire-reports/*.xml'
+        //     }
+        // }
+        
+        // stage('Deploy') {
+        //     steps {
+        //         bat 'java -jar target/demo-0.0.1-SNAPSHOT.jar'
+        //     }
+        // }
     }
 }
